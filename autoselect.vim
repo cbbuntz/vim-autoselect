@@ -60,9 +60,9 @@ fun! AutoSelect()
     
     if s:include('pair')
         if s:prevchar =~ (s:class('close'))
-            normal viw
+            normal! viw
         elseif s:nextchar =~ (s:class('open'))
-            normal viw
+            normal! viw
         elseif s:char_is('pair')
             if s:char_is('quote')
                 exe 'normal! vi'.s:curchar.'loho'
@@ -73,7 +73,7 @@ fun! AutoSelect()
             exe 'normal! vi'.s:context_str('pair')[0]
         endif
     elseif s:include(',')
-        normal! T,v/,\|\>
+        normal! lT,v/,\|\>
     elseif s:include('nonword') " contains > 1 consecutive nonword chars
         normal! viW
     elseif s:include('\w[:\-/.]\w')
@@ -83,9 +83,9 @@ fun! AutoSelect()
     elseif s:include('/$') " path or regex
         normal! vT/
     elseif s:include('word') " contains > 1 consecutive word chars
-        normal viw
+        normal! viw
     elseif s:char_is('\w') " cursor on wordchar
-        normal viw
+        normal! viw
     elseif s:include('\s')
         if s:nextchar =~ '\w'
             normal! vaw
