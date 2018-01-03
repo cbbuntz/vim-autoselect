@@ -2,7 +2,7 @@ let [s:context, s:curchar] = ['', '']
 
 let s:regex = {'pair': '[\[\]\{\}()\<\>"`'."']",
             \'open': '[\[\{(\<]',
-            \'close': '[\]\}(\>]',
+            \'close': '[\]\})\>]',
             \'quote': "[\"']",
             \'space': '\s\{2,}',
             \'word': '\w\{2,}',
@@ -48,10 +48,6 @@ endfun
 fun! s:context_str(class, ...)
     return matchstr(s:context, s:class(a:class))
 endfun
-
-" fun! s:select_WORD_no_paren()
-    " exe 'normal! \([\[\(\{]\)\@<=\S\+'
-" endfun
 
 fun! AutoSelect()
     let prevline = line('.')
